@@ -16,8 +16,10 @@
 
 <!--new comment-->
 <a>comment:</a><br>
-<form class="d-flex justify-content-between" action="{% url 'community:comments_create' article.pk %}" method="POST">
+<form action="{% url 'community:comments_create' article.pk %}" method="POST">
     {% csrf_token %}
-    <a>{{ comment_form.content|as_crispy_field }}</a>
-    <input type="submit" value="post" class="btn btn-primary btn-sm">
+    <a class="d-flex justify-content-between">
+        {{ comment_form.content| }}
+        <input type="submit" value="post" class="btn btn-primary btn-sm">
+    </a>
 </form>
