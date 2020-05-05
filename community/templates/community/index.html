@@ -1,21 +1,19 @@
 {% extends 'base.html' %}
 {% block body %}
 
-<h2>Index</h2>
-<div class="card-group">
 {% for article in articles %}
-    <div class="card" style="width: 18rem;">
-        <a href="{% url 'accounts:profile' article.user %}" class="card-header">{{ article.user }}</a>
+    <div class="card">
+        <a href="{% url 'accounts:profile' article.user %}" class="card-header text-dark text-decoration-none">{{ article.user }}</a>
         <img src="{{ article.image.url }}" class="card-img-top" alt="...">
         <div class="card-body">
             {% include 'community/_like.html' %}
-            <p class="card-text"><a href="{% url 'community:detail' article.pk %}">Title: {{ article.title }}</a></p>
+            <p class="card-text"><a class="text-dark text-decoration-none" href="{% url 'community:detail' article.pk %}">Title: {{ article.title }}</a></p>
             <p class="card-text">{{ article.comment_set.all|length }} comments</p>
             <p class="card-text"><small class="text-muted">Last updated at {{ article.updated_at }}</small></p>
         </div>
     </div>
 {% endfor %}
-</div>
+
 
 
 {% endblock %}

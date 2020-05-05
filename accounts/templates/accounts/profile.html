@@ -1,36 +1,43 @@
 {% extends 'base.html' %}
 {% block body %}
-<h2>{{ user.username }}'s Profile</h2>
-<hr>
-<!--Followers Followings-->
-<!--if the profile page is someone else's -->
-{% if user != request.user %}
-    <!--if the user is already following the person-->
-    {% if request.user in user.followers.all %}
-        <a href="{% url 'accounts:follow' user.username %}" class="btn btn-sm btn-secondary">unfollow</a>
-    <!--if the user is not following the person-->
-    {% else %}
-        <a href="{% url 'accounts:follow' user.username %}" class="btn btn-sm btn-primary">follow</a>
-    {% endif %}
-{% endif %}
+<div style="width: 20rem;">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>{{ user.username }}</h2>
 
-<!--all posts and all likes-->
-<p>All Posts | {{ user.article_set.all|length }} posts</p>
-<a href="{% url 'accounts:follow_list' user.username %}?list=followers">followers {{ user.followers.all.count }}</a>
-<br>
-<a href="{% url 'accounts:follow_list' user.username %}?list=followings">followings {{ user.followings.all.count }}</a>
-<hr>
+        <!--Followers Followings-->
+        <!--if the profile page is someone else's -->
+        {% if user != request.user %}
+            <!--if the user is already following the person-->
+            {% if request.user in user.followers.all %}
+                <a href="{% url 'accounts:follow' user.username %}" class="btn btn-sm btn-secondary">unfollow</a>
+            <!--if the user is not following the person-->
+            {% else %}
+                <a href="{% url 'accounts:follow' user.username %}" class="btn btn-sm btn-primary">follow</a>
+            {% endif %}
+        {% endif %}
+    </div>
 
-<h3>Posts</h3>
-{% for article in user.article_set.all %}
-  <a href="{% url 'community:detail' article.pk %}">{{ article.title }}</a>
-  <br>
-  <img src="{{ article.image_thumbnail.url }}">
-  <br>
+    <!--all posts and all likes-->
+    <div class="d-flex justify-content-between text-decoration-none">
+        <a><b>{{ user.article_set.all|length }}</b> posts</a>
+        <a class="text-dark text-decoration-none" href="{% url 'accounts:follow_list' user.username %}?list=followers"><b>{{ user.followers.all.count }}</b> followers</a>
+        <a class="text-dark text-decoration-none" href="{% url 'accounts:follow_list' user.username %}?list=followings"><b>{{ user.followings.all.count }}</b> followings</a>
+    </div>
+</div>
+<hr>
+<h4>Posts</h4>
+<p>{{ user.like_articles.all|length }} likes in total</p>
+
+<div class="row row-cols-3">
+{% for article in user.article_set.all reversed %}
+    <div class="col p-0">
+        <div class="card">
+            <a href="{% url 'community:detail' article.pk %}">
+                <img src="{{ article.image_thumbnail.url }}" class="card-img" alt="post">
+            </a>
+        </div>
+    </div>
 {% endfor %}
-<p>Total Likes | {{ user.like_articles.all|length }}</p>
-
-
-
+</div>
 
 {% endblock %}

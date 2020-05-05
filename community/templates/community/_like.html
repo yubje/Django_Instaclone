@@ -11,7 +11,7 @@
 
 <!--number of people who liked the post-->
 {% if article.like_users.all|length > 1 %}
-    <a href="{% url 'community:like_list' article.pk %}">{{ article.like_users.all|length }} likes</a>
+    <a class="text-dark text-decoration-none" href="{% url 'community:like_list' article.pk %}">{{ article.like_users.all|length }} likes</a>
 {% else %}
-    <a href="{% url 'community:like_list' article.pk %}">{{ article.like_users.all|length }} like</a>
+    <a class="text-dark text-decortaion-none" href="{% url 'community:like_list' article.pk %}">{{ article.like_users.all|length }} like</a>
 {% endif %}
