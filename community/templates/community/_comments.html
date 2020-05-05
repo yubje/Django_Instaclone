@@ -19,7 +19,7 @@
 <form action="{% url 'community:comments_create' article.pk %}" method="POST">
     {% csrf_token %}
     <a class="d-flex justify-content-between">
-        {{ comment_form.content| }}
+        {{ comment_form.content }}
         <input type="submit" value="post" class="btn btn-primary btn-sm">
     </a>
 </form>
