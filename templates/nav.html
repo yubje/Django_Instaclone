@@ -5,26 +5,37 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <!--home-->
       <li class="nav-item active">
-        <a class="nav-link" href="{% url 'community:index' %}"><i class="fas fa-home"></i></a>
+        <a class="nav-link" href="{% url 'community:index' %}">
+          <i class="fas fa-home" data-toggle="tooltip" data-placement="bottom" title="home"></i>
+        </a>
       </li>
       <!--new post-->
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'community:create' %}"><i class="far fa-edit" title="new"></i></a>
+        <a class="nav-link" href="{% url 'community:create' %}">
+          <i class="far fa-edit" data-toggle="tooltip" data-placement="bottom" title="new"></i>
+        </a>
       </li>
       {% if user.is_authenticated %}
       <!--logout-->
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'accounts:logout' %}"><i class="fas fa-sign-out-alt" title="logout"></i></a>
+        <a class="nav-link" href="{% url 'accounts:logout' %}">
+          <i class="fas fa-sign-out-alt" data-toggle="tooltip" data-placement="bottom" title="logout"></i>
+        </a>
       </li>
       {% else %}
       <!--sign up-->
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'accounts:signup' %}"><i class="fas fa-user-plus" title="sign up"></i></a>
+        <a class="nav-link" href="{% url 'accounts:signup' %}">
+          <i class="fas fa-user-plus" data-toggle="tooltip" data-placement="bottom" title="sign up"></i>
+        </a>
       </li>
       <!--login-->
       <li class="nav-item">
-        <a class="nav-link" href="{% url 'accounts:login' %}"><i class="fas fa-sign-in-alt" title="login"></i></a>
+        <a class="nav-link" href="{% url 'accounts:login' %}">
+          <i class="fas fa-sign-in-alt" data-toggle="tooltip" data-placement="bottom" title="login"></i>
+        </a>
       </li>
       {% endif %}
     </ul>
