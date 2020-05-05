@@ -15,4 +15,3 @@
 {% else %}
     <a href="{% url 'community:like_list' article.pk %}">{{ article.like_users.all|length }} like</a>
 {% endif %}
-<hr>

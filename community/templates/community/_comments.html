@@ -1,15 +1,22 @@
-<!--new comment-->
-<form action="{% url 'community:comments_create' article.pk %}" method="POST">
-    {% csrf_token %}
-    <p>comment:<br>{{ comment_form.content }}</p>
-    <input type="submit" value="write">
-</form>
-
 <!--comment list-->
+
 {% for comment in article.comment_set.all %}
-    <p>{{ comment.content }}</p>
-    <form action="{% url 'community:comments_delete' article.pk comment.pk %}" method="POST">
-    	{% csrf_token %}
-    	<button>delete</button>
-    </form>
+<div class="d-flex justify-content-between">
+    <a><b>{{ comment.user }}</b>  {{ comment.content }}</a>
+    {% if comment.user == user %}
+    <a href="{% url 'community:comments_delete' article.pk comment.pk %}">
+        <button class="btn btn-danger btn-sm">delete</button>
+    </a>
+    {% endif %}
+</div>
 {% endfor %}
+
+
+
+<!--new comment-->
+<a>comment:</a><br>
+<form class="d-flex justify-content-between" action="{% url 'community:comments_create' article.pk %}" method="POST">
+    {% csrf_token %}
+    <a>{{ comment_form.content }}</a>
+    <input type="submit" value="post" class="btn btn-primary btn-sm">
+</form>
