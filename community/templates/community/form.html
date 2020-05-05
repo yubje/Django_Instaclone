@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 {% block body %}
     {% if request.resolver_match.url_name == 'create' %}
     <h2>New Post</h2>
     <form action="{% url 'community:create' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button>Submit</button>
+        {{ form|crispy }}
+        <button class="btn btn-primary btn-sm">Submit</button>
     </form>
     {% else %}
     <h2>Edit</h2>
         <form action="{% url 'community:update' article.pk %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button>Update</button>
+        {{ form|crispy }}
+        <button class="btn btn-info btn-sm">Update</button>
     </form>
     {% endif %}
 

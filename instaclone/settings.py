@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',    # pip install django-crispy-forms
     'accounts',
     'community',
 ]
@@ -130,3 +131,6 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/2.1/howto/static-files/#serving-files-uploaded-by-a-user-during-development
 MEDIA_URL = '/media/'
+
+# django-crispy-form
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
