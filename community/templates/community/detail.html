@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+	<h2>DETAIL</h2>
+	<hr>
+	<a href="{% url 'accounts:profile' article.user %}">{{ article.user }}</a>
+	<p>Title: {{ article.title }}</p>
+	<p>Content: {{ article.content }}</p>
+	<p>Created at: {{ article.created_at }}</p>
+	<p>Updated at: {{ article.updated_at }}</p>
+	<img src="{{ article.image_thumbnail.url }}">
+	<br>
+    {% if request.user == article.user %}
+        <a href="{% url 'community:update' article.pk %}"><button>Edit</button></a>
+        <a href="{% url 'community:delete' article.pk %}"><button>Delete</button></a><br>
+    {% endif %}
+
+    {% include 'community/_like.html' %}
+
+    {% include 'community/_comments.html' %}
+
+{% endblock %}

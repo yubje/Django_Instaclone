@@ -1,0 +1,15 @@
+<!--new comment-->
+<form action="{% url 'community:comments_create' article.pk %}" method="POST">
+    {% csrf_token %}
+    <p>comment:<br>{{ comment_form.content }}</p>
+    <input type="submit" value="write">
+</form>
+
+<!--comment list-->
+{% for comment in article.comment_set.all %}
+    <p>{{ comment.content }}</p>
+    <form action="{% url 'community:comments_delete' article.pk comment.pk %}" method="POST">
+    	{% csrf_token %}
+    	<button>delete</button>
+    </form>
+{% endfor %}

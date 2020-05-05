@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<h2>{{ user }}</h2>
+{% for friend in f_list %}
+    <a href="{% url 'accounts:profile' friend %}" class="my-3">{{ friend.username }}</a>
+    {% if friend == request.user %}
+        <br>
+    {% else %}
+        {% if friend in request.user.followings.all %}
+            <a href="{% url 'accounts:follow' friend.username %}" class="btn btn-sm btn-secondary my-3">unfollow</a>
+            <br>
+        {% else %}
+            <a href="{% url 'accounts:follow' friend.username %}" class="btn btn-sm btn-primary my-3">follow</a>
+            <br>
+        {% endif %}
+    {% endif %}
+{% endfor %}
+{% endblock %}

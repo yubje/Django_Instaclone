@@ -1,0 +1,18 @@
+<!--likes : heart button-->
+{% if request.user in article.like_users.all %}
+    <a href="{% url 'community:like' article.pk %}">
+        <i class="fas fa-heart text-danger"></i>
+    </a>
+{% else %}
+    <a href="{% url 'community:like' article.pk %}">
+        <i class="far fa-heart text-danger"></i>
+    </a>
+{% endif %}
+
+<!--number of people who liked the post-->
+{% if article.like_users.all|length > 1 %}
+    <a href="{% url 'community:like_list' article.pk %}">{{ article.like_users.all|length }} likes</a>
+{% else %}
+    <a href="{% url 'community:like_list' article.pk %}">{{ article.like_users.all|length }} like</a>
+{% endif %}
+<hr>
