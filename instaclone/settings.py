@@ -120,7 +120,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
-STATIC_URL = '/static/'
 
 AUTH_USER_MODEL = 'accounts.User'
 # 앱이름.모델
@@ -134,3 +133,10 @@ MEDIA_URL = '/media/'
 
 # django-crispy-form
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+# logo image 추가 위한 경로
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]

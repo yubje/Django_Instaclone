@@ -3,7 +3,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from .models import Article, Comment
 from .forms import ArticleForm, CommentForm
-
+from datetime import datetime, timedelta
 
 def index(request):
     articles = Article.objects.order_by('-pk')
