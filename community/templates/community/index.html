@@ -3,7 +3,7 @@
 
 {% for article in articles %}
     <div class="card">
-        <a href="{% url 'accounts:profile' article.user %}" class="card-header text-dark text-decoration-none">{{ article.user }}</a>
+        <a href="{% url 'accounts:profile' article.user %}" class="card-header text-dark text-decoration-none font-weight-bold">{{ article.user }}</a>
         <img src="{{ article.image.url }}" class="card-img-top" alt="...">
         <div class="card-body">
             {% include 'community/_like.html' %}
