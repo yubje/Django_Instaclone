@@ -1,20 +1,18 @@
 {% extends 'base.html' %}
 {% block body %}
-<img src="/Instaclone/templates/images/instaclone.png" alt="Instaclone">
+
 {% for article in articles %}
     <div class="card">
-        <a href="{% url 'accounts:profile' article.user %}" class="card-header text-dark text-decoration-none font-weight-bold">{{ article.user }}</a>
+        {% include 'community/_post_nav.html' %}
         <img src="{{ article.image.url }}" class="card-img-top" alt="...">
         <div class="card-body">
             {% include 'community/_like.html' %}
             <p class="card-text"><a class="text-dark text-decoration-none" href="{% url 'community:detail' article.pk %}">Title: {{ article.title }}</a></p>
-
+            <!--num of comments-->
             <p class="card-text">{{ article.comment_set.all|length }} comments</p>
-            {% if article.updated_at == article.created_at %}
-        	    <p class="card-text"><small class="text-muted">Created at {{ article.created_at }}</small></p>
-            {% else %}
-        	    <p class="card-text"><small class="text-muted">Last updated at {{ article.updated_at }}</small></p>
-            {% endif %}
+            <!--updated time -->
+    	    <p class="card-text"><small class="text-muted">Last updated at {{ article.updated_at }}</small></p>
+
         </div>
     </div>
 {% endfor %}

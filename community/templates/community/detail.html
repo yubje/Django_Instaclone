@@ -2,22 +2,16 @@
 
 {% block body %}
 <div class="card">
-    <a href="{% url 'accounts:profile' article.user %}" class="card-header text-dark text-decoration-none font-weight-bold">{{ article.user }}</a>
+    {% include 'community/_post_nav.html' %}
+    <!--image-->
     <img src="{{ article.image.url }}" class="card-img-top" alt="...">
+    <!--post content -->
     <div class="card-body">
         {% include 'community/_like.html' %}
         <p class="card-text">Title: {{ article.title }}</p>
         <p class="card-text">{{ article.content }}</p>
-        {% if article.updated_at == article.created_at %}
-        	<p class="card-text"><small class="text-muted">Created at {{ article.created_at }}</small></p>
-        {% else %}
-        	<p class="card-text"><small class="text-muted">Last updated at {{ article.updated_at }}</small></p>
-        {% endif %}
 
-        {% if request.user == article.user %}
-            <a href="{% url 'community:update' article.pk %}"><button class="btn btn-info btn-sm">Edit</button></a>
-            <a href="{% url 'community:delete' article.pk %}"><button class="btn btn-danger btn-sm">Delete</button></a><br>
-        {% endif %}
+    	<p class="card-text"><small class="text-muted">Last updated at {{ article.updated_at }} | Created at {{ article.created_at }}</small></p>
         <hr>
         {% include 'community/_comments.html' %}
     </div>

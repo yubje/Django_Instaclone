@@ -26,7 +26,6 @@
 </div>
 <hr>
 <h4>Posts</h4>
-<p>{{ user.like_articles.all|length }} likes in total</p>
 
 <div class="row row-cols-3">
 {% for article in user.article_set.all reversed %}
