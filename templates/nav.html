@@ -1,14 +1,18 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-  <a class="navbar-brand" href="{% url 'community:index' %}">
-    {% load static %}
-    <img src="{% static 'navbar/instaclone1.png' %}" alt="Instaclone">
-  </a>
+  <!--<a class="navbar-brand" href="{% url 'community:index' %}">-->
+  <!--  {% load static %}-->
+  <!--  <img src="{% static 'navbar/instaclone1.png' %}" alt="Instaclone">-->
+  <!--</a>-->
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div class="collapse navbar-collapse justify-content-between my-auto" id="navbarSupportedContent">
+    <a class="navbar-brand" href="{% url 'community:index' %}">
+      {% load static %}
+      <img src="{% static 'navbar/instaclone1.png' %}" alt="Instaclone">
+    </a>
     <!--검색창-->
-    <form class="form-inline my-2 my-lg-0 m-auto">
+    <form class="form-inline my-2 my-lg-0">
       <div class="input-group mb-2">
         <!--검색 버튼-->
         <div class="input-group-prepend">
@@ -20,7 +24,7 @@
       </div>
     </form>
     <!--ml-auto : align left, mr-auto : align right-->
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav">
       <!--home-->
       <li class="nav-item active">
         <a class="nav-link" href="{% url 'community:index' %}">
